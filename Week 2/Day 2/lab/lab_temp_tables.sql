@@ -25,7 +25,7 @@ FROM temp_total_paid;
 -------------------------------------------------------------------------------- 3.
 
 WITH customer_summary AS (
-  SELECT rs.first_name || ' ' || rs.last_name AS customer_name, rs.email, rs.rental_count, cp.total_paid
+  SELECT CONCAT(rs.first_name, ' ', rs.last_name) AS customer_name, rs.email, rs.rental_count, cp.total_paid
   FROM customer_rental_summary rs
   JOIN temp_total_paid cp ON rs.customer_id = cp.customer_id
 )
