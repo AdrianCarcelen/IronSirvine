@@ -57,5 +57,3 @@ WHERE film.title LIKE '%Academy Dinosaur%'
   AND inventory.store_id = 2
 GROUP BY film.title
 ORDER BY copies_available_in_store2 DESC;
-
-select*from inventory;
