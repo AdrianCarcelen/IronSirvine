@@ -1,4 +1,4 @@
----------------------------------------------------------------------------------------------------------------------------------1. 
+--------------------------------------------------------------------------------------------------------------------------------- 1
 
 SELECT sakila.film.title, sakila.film.length
 FROM sakila.film
@@ -15,7 +15,25 @@ SELECT *, rental_date, CASE WHEN DAYOFWEEK(rental_date) = 1 OR DAYOFWEEK(rental_
 
 ---------------------------------------------------------------------------------------------------------------------------------- 3.
 
-SELECT film.title, case when rental_duration = NULL then 'Not Available' else rental_duration end as rental_duration FROM sakila.film;
+SELECT film.title, case when rental_duration is NULL then 'Not Available' else rental_duration end as rental_duration2 FROM sakila.film;
 
+---------------------------------------------------------------------------------------------------------------------------------- 4
 
+select substr(email,1,3) from sakila.customer;
 
+----------------------------------------------------------------------------------------------------------------------------------- 2.1
+
+select COUNT(title) from film;
+select rating,count(rating) as quenta from film group by rating order by quenta DESC;
+
+------------------------------------------------------------------------------------------------------------------------------------- 2.2
+
+select concat(stf.first_name,' ', stf.last_name) as staff_name, rtl.staff_id, count(rtl.staff_id) from sakila.rental rtl inner join sakila.staff stf on stf.staff_id=rtl.staff_id group by staff_id order by staff_id desc;
+
+------------------------------------------------------------------------------------------------------------------------------------ 2.3
+
+select rating, round(avg(length),2) as avg_length from sakila.film group by rating having avg_length > 112 order by avg(length) desc;
+
+----------------------------------------------------------------------------------------------------------------------------------- 2.4
+
+select last_name, count(last_name) as x from sakila.actor group by last_name having x<2;
