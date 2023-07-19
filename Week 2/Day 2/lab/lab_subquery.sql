@@ -95,4 +95,34 @@ WHERE fa.actor_id = (
 )
 ORDER BY a.actor_id DESC;
 
----------------------------------------------------------------------------- 7. 
+---------------------------------------------------------------------------- 7. #chek
+
+SELECT f.film_id, f.title
+FROM film f
+JOIN inventory i ON f.film_id = i.film_id
+JOIN rental r ON i.inventory_id = r.inventory_id
+JOIN customer c ON r.customer_id = c.customer_id
+JOIN (
+    SELECT p.customer_id, SUM(p.amount) AS total_paid
+    FROM payment p
+    GROUP BY p.customer_id
+    ORDER BY total_paid DESC
+    LIMIT 1
+) AS top_customer ON c.customer_id = top_customer.customer_id;
+
+---------------------------------------------------------------------------- 8. 
+
+SELECT customer_id, total_amount_spent
+FROM (
+  SELECT customer_id, SUM(amount) AS total_amount_spent
+  FROM payment
+  GROUP BY customer_id
+) AS client_payments
+WHERE total_amount_spent > (
+  SELECT AVG(total_amount_spent)
+  FROM (
+    SELECT customer_id, SUM(amount) AS total_amount_spent
+    FROM payment
+    GROUP BY customer_id
+  ) avg_payments
+);
