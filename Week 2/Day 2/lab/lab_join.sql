@@ -26,15 +26,17 @@ GROUP BY staff_id;
 
 ------------------------------------------------------------------------ 1.4
 
-select name, avg(length) as avg_duration From sakila.film_category inner join sakila.film on film.film_id = film_category.film_id
-									inner join sakila.category on category.category_id = film_category.category_id
-                                    group by name;
+select name, avg(length) as avg_duration From sakila.film_category 
+		inner join sakila.film on film.film_id = film_category.film_id
+		inner join sakila.category on category.category_id = film_category.category_id
+		group by name;
                                     
 ------------------------------------------------------------------------ 1.5
 
-select name, avg(length) as avg_duration From sakila.film_category inner join sakila.film on film.film_id = film_category.film_id
-									inner join sakila.category on category.category_id = film_category.category_id
-                                    group by name order by avg_duration desc limit 1;
+select name, avg(length) as avg_duration From sakila.film_category 
+		inner join sakila.film on film.film_id = film_category.film_id
+		inner join sakila.category on category.category_id = film_category.category_id
+		group by name order by avg_duration desc limit 1;
                                     
 ------------------------------------------------------------------------- 1.6
 
