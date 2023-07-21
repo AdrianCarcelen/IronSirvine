@@ -9,3 +9,7 @@ plt.ylabel('Media de visualizaciones')
 plt.title('Media de visualizaciones de Wikipedia por mes')
 plt.xticks(rotation=45)
 plt.show()
+
+
+
+
