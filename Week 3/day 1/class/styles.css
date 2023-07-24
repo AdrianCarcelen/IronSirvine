@@ -1,0 +1,13 @@
+h1{
+    color: red;
+}
+button{
+    background-color:darkorchid;
+}
+.miau{
+    margin: auto;
+    border: dotted purple 2px;
+    border-spacing: 1em;
+    padding: 1em;
+    background-color: aquamarine;
+}
